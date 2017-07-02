@@ -1,12 +1,13 @@
 angular.module("myApp");
 
-app.controller("homeController", ["$scope", "allServices", function ($scope, allServices) {
+app.controller("homeController", ["$scope", "MainService", function ($scope, MainService) {
 
     $scope.home = "Homing Device!";
 
     $scope.searchFunction = function (input) {
-        allServices.get(input).then(function (response) {
-
+    
+        MainService.get(input).then(function (videos) {
+                $scope.group = videos.items;
         })
     }
 
